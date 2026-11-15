@@ -1,0 +1,103 @@
+{
+  "name": "countrycode - Exported 2026-11-16 @ 0:10",
+  "integrationType": "custom-rest-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "https://countries.dev/callingcode/${input.callingcode}",
+      "requestType": "GET",
+      "headers": {},
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {
+        "name": "$[0].name",
+        "capital": "$[0].capital"
+      },
+      "translationMapDefaults": {
+        "name": "\"NOT_FOUND\"",
+        "capital": "\"NOT_FOUND\""
+      },
+      "successTemplate": "{ \"name\": ${name}, \"capital\": ${capital} }"
+    },
+    "timeoutSeconds": 5
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "callingcode": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "CountryResponse",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "capital": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "subregion": {
+            "type": "string"
+          },
+          "alpha2Code": {
+            "type": "string"
+          },
+          "alpha3Code": {
+            "type": "string"
+          },
+          "population": {
+            "type": "integer"
+          },
+          "area": {
+            "type": "number"
+          },
+          "demonym": {
+            "type": "string"
+          },
+          "callingCode": {
+            "type": "string"
+          },
+          "currencyCode": {
+            "type": "string"
+          },
+          "currencyName": {
+            "type": "string"
+          },
+          "currencySymbol": {
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "topLevelDomain": {
+            "type": "string"
+          },
+          "flagPng": {
+            "type": "string"
+          },
+          "flagSvg": {
+            "type": "string"
+          },
+          "languages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "secure": false
+}
